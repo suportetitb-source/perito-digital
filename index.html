@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alexandre Torres - Perito Digital</title>
+  <meta name="description" content="Alexandre Torres - Perícia Digital, Laudos e Investigação Computacional." />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #05080d;
+      color: #e6e6e6;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* MARCA D'ÁGUA FIXA ATRÁS DE TUDO */
+    .watermark {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 70%;
+      height: 70%;
+      background: url('logo.png') center/contain no-repeat;
+      opacity: 0.08;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* MENU */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(5,8,13,0.95);
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      padding: 15px;
+      z-index: 1000;
+    }
+    nav a {
+      color: #90e0ef;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+    }
+
+    /* HEADER */
+    header {
+      background: radial-gradient(circle at top, #0f3460, #05080d 75%);
+      color: white;
+      padding: 160px 0 0 0;
+      text-align: center;
+      border-bottom: 1px solid rgba(0,168,255,0.1);
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-container {
+      display: flex;
+      align-items: flex-end; 
+      justify-content: space-between;
+      max-width: 1300px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 20px;
+    }
+
+    .logo-column, .photo-column {
+      flex: 1;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .logo-column { justify-content: flex-start; }
+    .photo-column { justify-content: flex-end; }
+
+    .logo-column img, .photo-column img {
+      max-width: 350px;
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 0 15px rgba(0,0,0,0.6));
+      margin-bottom: 0; 
+    }
+
+    .text-column {
+      flex: 1.5;
+      padding-bottom: 100px;
+      z-index: 5;
+    }
+
+    header h1 {
+      font-size: 2.6rem;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    header h2 {
+      font-size: 1.4rem;
+      color: #48cae4;
+      font-weight: normal;
+      margin-top: 0;
+    }
+    header p {
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin: 0 auto 35px;
+      color: #b0c4de;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 16px 36px;
+      background: linear-gradient(135deg, #0077b6, #023e8a);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+      text-transform: uppercase;
+      border: 1px solid #0096c7;
+      box-shadow: 0 0 20px rgba(0,119,182,0.4);
+    }
+
+    section { padding: 90px 20px; max-width: 1150px; margin: auto; position: relative; z-index: 1; }
+    h2.section-title { text-align: center; font-size: 2.2rem; margin-bottom: 50px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
+    .card { background: rgba(14, 18, 27, 0.85); padding: 40px 30px; border-radius: 8px; border: 1px solid rgba(0,180,216,0.1); backdrop-filter: blur(5px); }
+    .card h3 { color: #48cae4; margin-top: 0; }
+    .about { background: rgba(11, 16, 22, 0.9); border-left: 4px solid #0077b6; padding: 50px; border-radius: 0 8px 8px 0; }
+    footer { background: #020305; color: #6c757d; text-align: center; padding: 50px 20px; position: relative; z-index: 1; }
+    .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; padding: 14px 22px; border-radius: 50px; font-weight: bold; text-decoration: none; z-index: 999; }
+
+    /* ===== RESPONSIVO CELULAR - ALINHADO PELA BASE ===== */
+    @media (max-width: 768px) {
+      .header-container {
+        display: flex;
+        flex-direction: row; 
+        align-items: flex-end; 
+        padding: 0 5px;
+      }
+      .logo-column, .photo-column { flex: 0.6; }
+      .logo-column img, .photo-column img { max-width: 95px; }
+      .text-column { flex: 1.8; padding-bottom: 30px; }
+      header h1 { font-size: 1.1rem; }
+      header h2 { font-size: 0.75rem; }
+      header p { font-size: 0.65rem; max-width: 150px; margin: 10px auto; }
+      .btn { padding: 10px 14px; font-size: 0.6rem; }
+      header { padding: 110px 0 0 0; }
+      nav { gap: 10px; padding: 10px; }
+      nav a { font-size: 0.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="watermark"></div>
+
+<nav>
+  <a href="#inicio">Início</a>
+  <a href="#pericia">Perícia Digital</a>
+  <a href="#servicos">Serviços</a>
+  <a href="#curriculo">Quem Sou</a>
+  <a href="#diferenciais">Diferenciais</a>
+  <a href="#contato">Contato</a>
+</nav>
+
+<header id="inicio">
+  <div class="header-container">
+    <div class="logo-column">
+      <img src="logo.png" alt="Logo Alexandre Torres">
+    </div>
+
+    <div class="text-column">
+      <h1>Alexandre Torres</h1>
+      <h2>Perito Forense Digital</h2>
+      <p><strong>Laudos técnicos, preservação de provas e investigação cibernética.</strong><br>
+      Soluções técnicas com validade jurídica para advogados e empresas.</p>
+      <a class="btn" href="https://wa.me/5551992509093" target="_blank">Falar com Perito</a>
+    </div>
+
+    <div class="photo-column">
+      <img src="alexandre.png" alt="Perito Alexandre Torres">
+    </div>
+  </div>
+</header>
+
+<section id="pericia">
+  <h2 class="section-title">O que é Perícia Digital?</h2>
+  <div class="about">
+    <p>A <strong>Perícia Digital</strong> é a ciência forense aplicada à tecnologia. Nossa missão é identificar, coletar, analisar e documentar evidências digitais de forma que elas tenham <strong>validade jurídica</strong> em processos judiciais ou disputas extrajudiciais.</p>
+    <p>Utilizamos hardwares e softwares forenses de ponta para garantir a <strong>Cadeia de Custódia</strong> e a integridade absoluta dos dados analisados.</p>
+  </div>
+</section>
+
+<section id="servicos">
+  <h2 class="section-title">Serviços Especializados</h2>
+  <div class="grid">
+    <div class="card"><h3> Computação Forense</h3><p>Extração e análise de dados em discos rígidos, SSDs e servidores, inclusive recuperação de dados apagados.</p></div>
+    <div class="card"><h3> Forense em Mobile com Foco em Smartphones</h3><p>Extração avançada de dados em Smartphones (WhatsApp, Geolocalização, Histórico) com ferramentas específicas.</p></div>
+    <div class="card"><h3> Assistente Técnico</h3><p>Atuação ao lado de advogados para formular quesitos, acompanhar diligências e contestar laudos contrários.</p></div>
+    <div class="card"><h3> Investigação Digital</h3><p>Rastreamento de autoria, análise de fraudes corporativas, vazamento de dados e concorrência desleal.</p></div>
+    <div class="card"><h3> Parecer Técnico</h3><p>Documento técnico fundamentado para esclarecer fatos tecnológicos em processos cíveis, trabalhistas ou criminais.</p></div>
+    <div class="card"><h3> Veracidade de Mídia</h3><p>Análise de metadados para confirmar se prints, áudios ou vídeos sofreram manipulação ou edição.</p></div>
+  </div>
+</section>
+
+<section id="curriculo">
+  <h2 class="section-title">Quem Sou</h2>
+  <div class="about">
+    <p><strong>CURRÍCULO RESUMIDO DO PERITO</strong></p>
+    <p><strong>Alexandre Roberto Faia Torres</strong> é Perito em Computação Forense pela MM Forense, Perito em Imagens, Áudio e Vídeo pela MM Forense, Perito em Recuperação de Dados pela MM Forense, Analista de Vulnerabilidades pela ABSI – Associação Brasileira de Segurança na Internet.</p>
+    <p>Possui Tecnólogo em Redes de Computadores pela Universidade Paulista (UNIP), além de formação como Técnico em Redes de Computadores pelo Instituto Federal do Amazonas (IFAM) e pelo System Center, além de Técnico em Montagem e Manutenção de Computadores.</p>
+    <p>Com mais de 15 anos de experiência na área de Tecnologia da Informação, serviu por 4 anos no Exército Brasileiro (8º BIS), atuando no setor de informática, adquirindo sólida disciplina técnica e compromisso com procedimentos formais.</p>
+  </div>
+</section>
+
+<section id="diferenciais">
+  <h2 class="section-title">Diferenciais</h2>
+  <div class="about">
+    <p>✔ Imparcialidade técnica | ✔ Cadeia de custódia rigorosa | ✔ Metodologia forense reconhecida | ✔ Sigilo absoluto das informações</p>
+  </div>
+</section>
+
+<section id="contato">
+  <h2 class="section-title">Contato</h2>
+  <div class="grid">
+    <div class="card"><h3> Escritório</h3><p>Santa Cruz do Sul – RS<br>Atuação em todo o Brasil</p></div>
+    <div class="card"><h3> Contato</h3><p>(51) 99250-9093</p></div>
+    <div class="card"><h3> E-mail</h3><p>suportetitb@gmail.com</p></div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Alexandre Torres - Perícia e Segurança Digital.</p>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/5551992509093" target="_blank">💬 Solicitar Análise</a>
+
+</body>
+</html>
